@@ -1,10 +1,10 @@
 .logo {
-    width: 120px;
-    height: 31px;
+    /* width: 120px; */
+    /* height: 31px; */
     /* background: rgba(255, 255, 255, 0.2); */
-    margin: 0px 28px 16px 0;
-    float: left;
-    color: white;
+    /* margin: 0px 28px 16px 0; */
+    /* float: left; */
+    /* color: white; */
   }
 
   .header-menu {
@@ -16,11 +16,13 @@
   }
 
   nz-breadcrumb {
-    margin: 16px 30px;
+    margin: 16px 65px;
   }
 
   .inner-layout {
-    padding: 24px 0;
+    padding: 24px 0px;
+    padding-left: 120px;
+    padding-right: 20px;
     background: #fff;
   }
 
@@ -35,4 +37,8 @@
 
   nz-footer {
     text-align: center;
+  }
+
+  [nz-menu] {
+    width: 300px;
   }

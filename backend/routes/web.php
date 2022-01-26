@@ -16,3 +16,19 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+$router->group(['prefix' => 'api'], function () use ($router) {
+    $router->get('modulos/{id}',  ['uses' => 'ModuloController@mostrarModulos']);
+
+    $router->get('modulo/{id}', ['uses' => 'ModuloController@mostrarModulo']);
+
+    $router->post('modulo', ['uses' => 'ModuloController@crearModulo']);
+
+    $router->delete('modulo/{id}', ['uses' => 'ModuloController@eliminarModulo']);
+
+    $router->put('modulo/{id}', ['uses' => 'ModuloController@actualizarModulo']);
+});
+
+$router->group(['prefix' => 'api'], function () use ($router) {
+    $router->get('empleados/',  ['uses' => 'EmpleadoController@mostrarEmpleados']);
+});

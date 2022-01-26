@@ -74,13 +74,16 @@ import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzAnchorModule } from 'ng-zorro-antd/anchor';
 import { NzBackTopModule } from 'ng-zorro-antd/back-top';
+import { ApiService } from './api-service.service';
+import { ListarClientesComponent } from './listar-clientes/listar-clientes.component';
 
 registerLocaleData(en);
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    ListarClientesComponent
   ],
   imports: [
     BrowserModule,
@@ -152,7 +155,7 @@ registerLocaleData(en);
     NzAnchorModule,
     NzBackTopModule
   ],
-  providers: [{ provide: NZ_I18N, useValue: en_US }],
+  providers: [{ provide: NZ_I18N, useValue: en_US }, ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
