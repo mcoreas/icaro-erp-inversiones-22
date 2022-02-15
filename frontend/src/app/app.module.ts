@@ -76,6 +76,10 @@ import { NzAnchorModule } from 'ng-zorro-antd/anchor';
 import { NzBackTopModule } from 'ng-zorro-antd/back-top';
 import { ApiService } from './api-service.service';
 import { ListarClientesComponent } from './listar-clientes/listar-clientes.component';
+import { ListarEmpleadosComponent } from './listar-empleados/listar-empleados.component';
+import { LoginComponent } from './login/login.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { GeneralComponent } from './general/general.component';
 
 registerLocaleData(en);
 
@@ -83,7 +87,11 @@ registerLocaleData(en);
   declarations: [
     AppComponent,
     HeaderComponent,
-    ListarClientesComponent
+    ListarClientesComponent,
+    ListarEmpleadosComponent,
+    LoginComponent,
+    DashboardComponent,
+    GeneralComponent
   ],
   imports: [
     BrowserModule,

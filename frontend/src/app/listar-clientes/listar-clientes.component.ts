@@ -12,12 +12,12 @@ export class ListarClientesComponent implements OnInit {
   constructor(private apiService: ApiService, private route:Router) { }
   searchValue = '';
   visible = false;
-  listOfData: Empleado[] = [];
-  listOfDisplayData: Empleado[] = [];
+  listOfData: Cliente[] = [];
+  listOfDisplayData: Cliente[] = [];
 
   ngOnInit(): void {
 
-    this.apiService.getData("empleados").subscribe(
+    this.apiService.getData("clientes").subscribe(
       data => {
         const res:any = data;
         this.listOfData = res;
@@ -38,57 +38,38 @@ export class ListarClientesComponent implements OnInit {
 
   search(): void {
     this.visible = false;
-    this.listOfDisplayData = this.listOfData.filter((item: Empleado) => item.Nombres.indexOf(this.searchValue) !== -1);
+    this.listOfDisplayData = this.listOfData.filter((item: Cliente) => item.Nombre.toLowerCase().indexOf(this.searchValue.toLowerCase()) !== -1);
   }
 
 }
 
-interface Empleado {
+interface Cliente {
   Id:string;
-  CodigoEmpleado:string;
-  Nombres   :string;
-  Apellidos  :string;
-  FechaNacimiento :string;
-  NumeroDUI :string;
-  NumeroNIT :string;
+  TipoPersona:string;
+  Dui   :string;
+  RazonSocial  :string;
+  Giro :string;
+  RegistroFiscal :string;
+  TamanoEmpresa :string;
+  Nombre :string;
   Direccion :string;
-  Municipio :string;
   Departamento :string;
+  Municipio :string;
   Telefono :string;
-  Celular :string;
-  ContactoEmergencia  :string;
-  NumeroISSS :string;
-  NumeroNUP :string;
+  NombreContacto  :string;
+  NIT :string;
+  Email :string;
+  Observaciones :string;
+  Percepcion :string;
+  Retencion :string;
+  Exento :string;
+  Credito :string;
+  LimiteCredito :string;
+  DiasCredito :string;
+  Activo :string;
+  CuentaContable :string;
+  Empresa :string;
+  Saldo :string;
   FechaIngreso :string;
-  FechaEgreso :string;
-  FechaContratacion :string;
-  SalarioBase :string;
   Sucursal :string;
-  InstitucionPrevisional :string;
-  TelefonoEmergencia :string;
-  HorasLaborales :string;
-  Banco :string;
-  CuentaDeBanco :string;
-  CuentaPasivo :string;
-  CuentaGasto :string;
-  Comentario :string;
-  CategoriaEmpleado :string;
-  Fotografia :string;
-  Estado :string;
-  Profesion :string;
-  EstadoCivil :string;
-  PermiteCuadre :string;
-  CargoEmpleado :string;
-  FechaExpedicionDUI :string;
-  LugarExpedicionDUI :string;
-  Sexo :string;
-  Nacionalidad :string;
-  SaltoMarcacion :string;
-  PoseeLicencia :string;
-  ParentescoEmergencia :string;
-  Horario :string;
-  PagoCheque :string;
-  NombresNIT :string;
-  ApellidosNIT :string;
-  TelefonoLaboral :string;
 }

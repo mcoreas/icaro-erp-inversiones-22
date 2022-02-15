@@ -1,41 +1,182 @@
-<nz-layout>
-  <nz-header>
-    <div class="logo"><img src="assets/img/logo.png" width="250"></div>
-    <!-- <ul nz-menu nzTheme="dark" nzMode="horizontal" class="header-menu">
-      <li nz-menu-item nzSelected>nav 1</li>
-      <li nz-menu-item>nav 2</li>
-      <li nz-menu-item>nav 3</li>
-    </ul> -->
-  </nz-header>
-  <nz-layout>
-    <nz-sider nzWidth="200px" nzTheme="light">
-      <ul nz-menu nzMode="inline" class="sider-menu" >
-        <ng-container *ngFor="let item of menu">
-          <li nz-submenu [nzIcon]="item.icon" [nzTitle]="item.nombre">
-            <ul>
-                <li nz-submenu [nzTitle]="item.modulos.nombre">
-                  <ul>
-                    <ng-container *ngFor="let acciones of item.modulos.accion">
-                      <li nz-menu-item (click)="redireccionarPagina(acciones.accion)">{{acciones.accion}}</li>
-                    </ng-container>
-                  </ul>
-                </li>
+<aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 " id="sidenav-main" data-color="dark">
+  <div class="sidenav-header" style="background-image:url('assets/img/logo-ct.jpeg');
+      width: 160px;
+      height: 100px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;">
+  </div>
+  <hr class="horizontal dark mt-0">
+  <div class="collapse navbar-collapse  w-auto  max-height-vh-100 h-100" id="sidenav-collapse-main">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link  active" [routerLink]="['/dashboard']" routerLinkActive="router-link-active" >
+          <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="fa-solid fa-house" style="color: white !important; font-size: 1.3em;opacity: 1;top: 0px;"></i>
+          </div>
+          <span class="nav-link-text ms-1">Inicio</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" nz-dropdown nzTrigger="click" [nzDropdownMenu]="general">
+          <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="fa-solid fa-gear" style="color: white !important; font-size: 1.3em;opacity: 1;top: 0px;"></i>
+          </div>
+          <span class="nav-link-text ms-1">General</span><i class="fa-solid fa-angle-down" style="position:relative;left:80px;"></i>
+        </a>
+        <nz-dropdown-menu #general="nzDropdownMenu">
+          <ul nz-menu>
+            <li nz-menu-item>Proveedores</li>
+            <li nz-menu-item>Comportamiento de períodos</li>
+            <li nz-menu-item>Configuración</li>
+            <li nz-menu-item>Alertas</li>
+          </ul>
+        </nz-dropdown-menu>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" nz-dropdown nzTrigger="click" [nzDropdownMenu]="comercial">
+          <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="fa-solid fa-shop" style="color: white !important; font-size: 1.3em;opacity: 1;top: 0px;"></i>
+          </div>
+          <span class="nav-link-text ms-1">Comercial</span><i class="fa-solid fa-angle-down" style="position:relative;left:66px;"></i>
+        </a>
+        <nz-dropdown-menu #comercial="nzDropdownMenu">
+          <ul nz-menu>
+            <li nz-menu-item [routerLink]="['/clientes']" routerLinkActive="router-link-active" >Clientes</li>
+            <li nz-menu-item>Días Creditos</li>
+            <li nz-menu-item>Tipos de Precio</li>
+            <li nz-menu-item>Puntos de Venta</li>
+            <li nz-menu-item>Tipos de Pago</li>
+            <li nz-menu-item>Tipos de Documento</li>
+            <li nz-menu-item>Marcas de Producto</li>
+            <li nz-menu-item>Líneas de Produto</li>
+            <li nz-menu-item>Tipos de Producto</li>
+          </ul>
+        </nz-dropdown-menu>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" nz-dropdown nzTrigger="click" [nzDropdownMenu]="financiero">
+          <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="fa-solid fa-dollar-sign" style="color: #fff !important; font-size: 1.3em;opacity: 1;top: 0px;"></i>
+          </div>
+          <span class="nav-link-text ms-1">Financiero</span><i class="fa-solid fa-angle-down" style="position:relative;left:64px;"></i>
+        </a>
+        <nz-dropdown-menu #financiero="nzDropdownMenu">
+          <ul nz-menu>
+            <!-- <li nz-menu-item>Clientes</li>
+            <li nz-menu-item>Días Creditos</li>
+            <li nz-menu-item>Tipos de Precio</li>
+            <li nz-menu-item>Puntos de Venta</li>
+            <li nz-menu-item>Tipos de Pago</li>
+            <li nz-menu-item>Tipos de Documento</li>
+            <li nz-menu-item>Marcas de Producto</li>
+            <li nz-menu-item>Líneas de Produto</li>
+            <li nz-menu-item>Tipos de Producto</li> -->
+          </ul>
+        </nz-dropdown-menu>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" nz-dropdown nzTrigger="click" [nzDropdownMenu]="rrhh" >
+          <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="fa-solid fa-user-group" style="color: #fff !important; font-size: 1.3em;opacity: 1;top: 0px;"></i>
+          </div>
+          <span class="nav-link-text ms-1">Recursos Humanos</span><i class="fa-solid fa-angle-down" style="position:relative;left:11px;"></i>
+        </a>
+        <nz-dropdown-menu #rrhh="nzDropdownMenu">
+          <ul nz-menu>
+            <li nz-menu-item>Aplicar Cargos Empleados</li>
+            <li nz-menu-item>Cargos de Empleados</li>
+            <li nz-menu-item>Area Laboral</li>
+            <li nz-menu-item>Institucion Provisional</li>
+            <li nz-menu-item>Aguinaldo</li>
+            <li nz-menu-item>Descuentos Programados</li>
+            <li nz-menu-item [routerLink]="['/empleados']" routerLinkActive="router-link-active" >Empleados</li>
+            <li nz-menu-item>Portal de Empleado</li>
+            <li nz-menu-item>Estados de Empleado</li>
+            <li nz-menu-item>Tipos de Capacitación</li>
+            <li nz-menu-item>Acción de Personal</li>
+            <li nz-menu-item>Tabla de Renta</li>
+            <li nz-menu-item>Ingreso / Descuento</li>
+            <li nz-menu-item>Capacitaciones</li>
+            <li nz-menu-item>Acciones de Personal</li>
+            <li nz-menu-item>Días Festivos</li>
+            <li nz-menu-item>Tipo de Descuento</li>
+            <li nz-menu-item>Vacación Día</li>
+            <li nz-menu-item>Vacación Día Empleado</li>
+            <li nz-menu-item>Tipo de Jornada Vacación Día</li>
+          </ul>
+        </nz-dropdown-menu>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" nz-dropdown nzTrigger="click" [nzDropdownMenu]="operaciones"  >
+          <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="fa-solid fa-percent" style="color: #fff !important; font-size: 1.3em;opacity: 1;top: 0px;"></i>
+          </div>
+          <span class="nav-link-text ms-1">Operaciones</span><i class="fa-solid fa-angle-down" style="position:relative;left:50px;"></i>
+        </a>
+        <nz-dropdown-menu #operaciones="nzDropdownMenu">
+          <ul nz-menu>
+            <li nz-menu-item>Servicios</li>
+          </ul>
+        </nz-dropdown-menu>
+      </li>
+    </ul>
+  </div>
+</aside>
+<main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
+  <!-- Navbar -->
+  <nav class="navbar navbar-main navbar-dark bg-gradient-dark navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
+    <div class="container-fluid py-1 px-3">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5" >
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;" style="color:white !important;">Página</a></li>
+          <li class="breadcrumb-item text-sm text-dark active" aria-current="page" style="color:white !important;">Inicio</li>
+        </ol>
+        <!-- <h6 class="font-weight-bolder mb-0">Inicio</h6> -->
+      </nav>
+      <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+        <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+          <div class="input-group">
+            <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
+            <input type="text" class="form-control" placeholder="Buscar">
+          </div>
+        </div>
+        <ul class="navbar-nav  justify-content-end">
+          <li class="nav-item d-flex align-items-center">
+            <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
+              <i class="fa fa-user me-sm-1"></i>
+              <!-- <span class="d-sm-inline d-none">Sign In</span> -->
+            </a>
+          </li>
+          <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+            <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
+              <div class="sidenav-toggler-inner">
+                <i class="sidenav-toggler-line"></i>
+                <i class="sidenav-toggler-line"></i>
+                <i class="sidenav-toggler-line"></i>
+              </div>
+            </a>
+          </li>
+          <li class="nav-item px-3 d-flex align-items-center">
+            <a href="javascript:;" class="nav-link text-body p-0">
+              <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
+            </a>
+          </li>
+          <li class="nav-item dropdown pe-2 d-flex align-items-center">
+            <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa fa-bell cursor-pointer"></i>
+            </a>
+            <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
             </ul>
           </li>
-        </ng-container>
-      </ul>
-    </nz-sider>
-    <nz-layout class="inner-layout">
-      <!-- <nz-breadcrumb>
-        <nz-breadcrumb-item>Home</nz-breadcrumb-item>
-        <nz-breadcrumb-item>List</nz-breadcrumb-item>
-        <nz-breadcrumb-item>App</nz-breadcrumb-item>
-      </nz-breadcrumb> -->
-      <nz-content>
-        <router-outlet></router-outlet>
-      </nz-content>
-    </nz-layout>
-  </nz-layout>
-</nz-layout>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- End Navbar -->
+  <div class="container-fluid py-4">
+    <router-outlet></router-outlet>
+  </div>
+  <section id="init"></section>
 
 

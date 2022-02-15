@@ -1,0 +1,121 @@
+<nz-page-header
+class="site-page-header"
+nzTitle="Lista de Empleados"
+></nz-page-header>
+
+<nz-table #nzTable [nzData]="listOfDisplayData" [nzScroll]="{ x: '10000px' }"  [nzPageSize]="20">
+  <thead>
+    <tr>
+      <th>Codigo de Empleado</th>
+      <th nzCustomFilter>
+        Nombres
+        <nz-filter-trigger [(nzVisible)]="visible" [nzActive]="searchValue.length > 0" [nzDropdownMenu]="menu">
+          <i nz-icon nzType="search"></i>
+        </nz-filter-trigger>
+      </th>
+      <th>Apellidos</th>
+      <th>Fecha de Nacimiento</th>
+      <th>DUI</th>
+      <th>NIT</th>
+      <th>Direccion</th>
+      <th>Municipio</th>
+      <th>Departamento</th>
+      <th>Telefono</th>
+      <th>Celular</th>
+      <th>Contacto de Emergencia</th>
+      <th>ISSS</th>
+      <th>NUP</th>
+      <th>Fecha de Ingreso</th>
+      <th>Fecha de Egreso</th>
+      <th>Fecha de Contratacion</th>
+      <th>Salario Base</th>
+      <th>Sucursal</th>
+      <th>Institucion Previsional</th>
+      <th>Telefono de Emergencia</th>
+      <th>Horas Laborales</th>
+      <th>Banco</th>
+      <th>Cuenta de banco</th>
+      <th>Cuenta pasivo</th>
+      <th>Cuenta gasto</th>
+      <th>Comentario</th>
+      <th>Categoria Empleado</th>
+      <th>Fotografia</th>
+      <th>Estado</th>
+      <th>Profesion</th>
+      <th>Estado Civil</th>
+      <th>Permite Cuadre</th>
+      <th>Cargo Empleado</th>
+      <th>Fecha Expedicion DUI</th>
+      <th>Lugar Expedicion DUI</th>
+      <th>Genero</th>
+      <th>Nacionalidad</th>
+      <th>Salto Marcacion</th>
+      <th>Posee Licencia</th>
+      <th>Parentesco Emergencia</th>
+      <th>Horario</th>
+      <th>Pago Cheque</th>
+      <th>Nombres NIT</th>
+      <th>Apellidos NIT</th>
+      <th>Telefono Laboral</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of nzTable.data">
+      <td>{{ data.CodigoEmpleado }}</td>
+      <td>{{ data.Nombres }}</td>
+      <td>{{ data.Apellidos }}</td>
+      <td>{{ data.FechaNacimiento }}</td>
+      <td>{{ data.NumeroDUI }}</td>
+      <td>{{ data.NumeroNIT }}</td>
+      <td>{{ data.Direccion }}</td>
+      <td>{{ data.Municipio }}</td>
+      <td>{{ data.Departamento }}</td>
+      <td>{{ data.Telefono }}</td>
+      <td>{{ data.Celular }}</td>
+      <td>{{ data.ContactoEmergencia }}</td>
+      <td>{{ data.NumeroISSS }}</td>
+      <td>{{ data.NumeroNUP }}</td>
+      <td>{{ data.FechaIngreso }}</td>
+      <td>{{ data.FechaEgreso }}</td>
+      <td>{{ data.FechaContratacion }}</td>
+      <td>{{ data.SalarioBase }}</td>
+      <td>{{ data.Sucursal }}</td>
+      <td>{{ data.InstitucionPrevisional }}</td>
+      <td>{{ data.TelefonoEmergencia }}</td>
+      <td>{{ data.HorasLaborales }}</td>
+      <td>{{ data.Banco }}</td>
+      <td>{{ data.CuentaDeBanco }}</td>
+      <td>{{ data.CuentaPasivo }}</td>
+      <td>{{ data.CuentaGasto }}</td>
+      <td>{{ data.Comentario }}</td>
+      <td>{{ data.CategoriaEmpleado }}</td>
+      <td>{{ data.Fotografia }}</td>
+      <td>{{ data.Estado }}</td>
+      <td>{{ data.Profesion }}</td>
+      <td>{{ data.EstadoCivil }}</td>
+      <td>{{ data.PermiteCuadre }}</td>
+      <td>{{ data.CargoEmpleado }}</td>
+      <td>{{ data.FechaExpedicionDUI }}</td>
+      <td>{{ data.LugarExpedicionDUI }}</td>
+      <td>{{ data.Sexo }}</td>
+      <td>{{ data.Nacionalidad }}</td>
+      <td>{{ data.SaltoMarcacion }}</td>
+      <td>{{ data.PoseeLicencia }}</td>
+      <td>{{ data.ParentescoEmergencia }}</td>
+      <td>{{ data.Horario }}</td>
+      <td>{{ data.PagoCheque }}</td>
+      <td>{{ data.NombresNIT }}</td>
+      <td>{{ data.ApellidosNIT }}</td>
+      <td>{{ data.TelefonoLaboral }}</td>
+    </tr>
+  </tbody>
+</nz-table>
+<nz-dropdown-menu #menu="nzDropdownMenu">
+  <div class="ant-table-filter-dropdown">
+    <div class="search-box">
+      <input type="text" nz-input placeholder="Buscar" [(ngModel)]="searchValue" />
+      <button nz-button nzSize="small" nzType="primary" (click)="search()" class="search-button">Buscar</button>
+      <button nz-button nzSize="small" (click)="reset()">Limpiar</button>
+    </div>
+  </div>
+</nz-dropdown-menu>

@@ -1,112 +1,82 @@
 <nz-page-header
 class="site-page-header"
-nzTitle="Lista de Empleados"
+nzTitle="Lista de Clientes"
 ></nz-page-header>
 
-<nz-table #nzTable [nzData]="listOfDisplayData" [nzScroll]="{ x: '10000px' }"  [nzPageSize]="20">
+<nz-table #nzTable [nzData]="listOfDisplayData" [nzScroll]="{ x: '8000px' }"  [nzPageSize]="20">
   <thead>
     <tr>
-      <th>Codigo de Empleado</th>
+      <th>Acciones</th>
       <th nzCustomFilter>
-        Nombres
+        Nombre
         <nz-filter-trigger [(nzVisible)]="visible" [nzActive]="searchValue.length > 0" [nzDropdownMenu]="menu">
           <i nz-icon nzType="search"></i>
         </nz-filter-trigger>
       </th>
-      <th>Apellidos</th>
-      <th>Fecha de Nacimiento</th>
+      <th>Razon Social</th>
+      <th>Giro</th>
+      <th>Tipo de Persona</th>
       <th>DUI</th>
       <th>NIT</th>
       <th>Direccion</th>
       <th>Municipio</th>
       <th>Departamento</th>
       <th>Telefono</th>
-      <th>Celular</th>
-      <th>Contacto de Emergencia</th>
-      <th>ISSS</th>
-      <th>NUP</th>
+      <th>Registro Fiscal</th>
+      <th>Tamaño de Empresa</th>
+      <th>Nombre de Contacto</th>
+      <th>Email</th>
+      <th>Observaciones</th>
+      <th>Percepcion</th>
+      <th>Retencion</th>
+      <th>Exento</th>
+      <th>Credito</th>
+      <th>Limite de Credito</th>
+      <th>Dias de Credito</th>
+      <th>Activo</th>
+      <th>Cuenta Contable</th>
+      <th>Empresa</th>
+      <th>Saldo</th>
       <th>Fecha de Ingreso</th>
-      <th>Fecha de Egreso</th>
-      <th>Fecha de Contratacion</th>
-      <th>Salario Base</th>
       <th>Sucursal</th>
-      <th>Institucion Previsional</th>
-      <th>Telefono de Emergencia</th>
-      <th>Horas Laborales</th>
-      <th>Banco</th>
-      <th>Cuenta de banco</th>
-      <th>Cuenta pasivo</th>
-      <th>Cuenta gasto</th>
-      <th>Comentario</th>
-      <th>Categoria Empleado</th>
-      <th>Fotografia</th>
-      <th>Estado</th>
-      <th>Profesion</th>
-      <th>Estado Civil</th>
-      <th>Permite Cuadre</th>
-      <th>Cargo Empleado</th>
-      <th>Fecha Expedicion DUI</th>
-      <th>Lugar Expedicion DUI</th>
-      <th>Genero</th>
-      <th>Nacionalidad</th>
-      <th>Salto Marcacion</th>
-      <th>Posee Licencia</th>
-      <th>Parentesco Emergencia</th>
-      <th>Horario</th>
-      <th>Pago Cheque</th>
-      <th>Nombres NIT</th>
-      <th>Apellidos NIT</th>
-      <th>Telefono Laboral</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let data of nzTable.data">
-      <td>{{ data.CodigoEmpleado }}</td>
-      <td>{{ data.Nombres }}</td>
-      <td>{{ data.Apellidos }}</td>
-      <td>{{ data.FechaNacimiento }}</td>
-      <td>{{ data.NumeroDUI }}</td>
-      <td>{{ data.NumeroNIT }}</td>
+      <td>
+        <div>
+          <i class="fa-solid fa-eye" style="margin-right: 5px;color:#3498DB;" nzTooltipTitle="Ver mas" nzTooltipPlacement="top" nz-tooltip></i>
+          <i class="fa-solid fa-pen-to-square" style="margin-right: 5px;color:#E67E22;" nzTooltipTitle="Editar" nzTooltipPlacement="top" nz-tooltip></i>
+          <i class="fa-solid fa-trash" style="color:#E74C3C;" nzTooltipTitle="Eliminar" nzTooltipPlacement="top" nz-tooltip></i>
+        </div>
+      </td>
+      <td><b>{{ data.Nombre }}</b></td>
+      <td>{{ data.RazonSocial }}</td>
+      <td>{{ data.Giro }}</td>
+      <td>{{ data.TipoPersona }}</td>
+      <td>{{ data.Dui }}</td>
+      <td>{{ data.NIT }}</td>
       <td>{{ data.Direccion }}</td>
       <td>{{ data.Municipio }}</td>
       <td>{{ data.Departamento }}</td>
       <td>{{ data.Telefono }}</td>
-      <td>{{ data.Celular }}</td>
-      <td>{{ data.ContactoEmergencia }}</td>
-      <td>{{ data.NumeroISSS }}</td>
-      <td>{{ data.NumeroNUP }}</td>
+      <td>{{ data.RegistroFiscal }}</td>
+      <td>{{ data.TamanoEmpresa }}</td>
+      <td>{{ data.NombreContacto }}</td>
+      <td>{{ data.Email }}</td>
+      <td>{{ data.Observaciones }}</td>
+      <td>{{ data.Percepcion }}</td>
+      <td>{{ data.Retencion }}</td>
+      <td>{{ data.Exento }}</td>
+      <td>{{ data.Credito }}</td>
+      <td>{{ data.LimiteCredito }}</td>
+      <td>{{ data.DiasCredito }}</td>
+      <td>{{ data.Activo }}</td>
+      <td>{{ data.CuentaContable }}</td>
+      <td>{{ data.Empresa }}</td>
+      <td>{{ data.Saldo }}</td>
       <td>{{ data.FechaIngreso }}</td>
-      <td>{{ data.FechaEgreso }}</td>
-      <td>{{ data.FechaContratacion }}</td>
-      <td>{{ data.SalarioBase }}</td>
       <td>{{ data.Sucursal }}</td>
-      <td>{{ data.InstitucionPrevisional }}</td>
-      <td>{{ data.TelefonoEmergencia }}</td>
-      <td>{{ data.HorasLaborales }}</td>
-      <td>{{ data.Banco }}</td>
-      <td>{{ data.CuentaDeBanco }}</td>
-      <td>{{ data.CuentaPasivo }}</td>
-      <td>{{ data.CuentaGasto }}</td>
-      <td>{{ data.Comentario }}</td>
-      <td>{{ data.CategoriaEmpleado }}</td>
-      <td>{{ data.Fotografia }}</td>
-      <td>{{ data.Estado }}</td>
-      <td>{{ data.Profesion }}</td>
-      <td>{{ data.EstadoCivil }}</td>
-      <td>{{ data.PermiteCuadre }}</td>
-      <td>{{ data.CargoEmpleado }}</td>
-      <td>{{ data.FechaExpedicionDUI }}</td>
-      <td>{{ data.LugarExpedicionDUI }}</td>
-      <td>{{ data.Sexo }}</td>
-      <td>{{ data.Nacionalidad }}</td>
-      <td>{{ data.SaltoMarcacion }}</td>
-      <td>{{ data.PoseeLicencia }}</td>
-      <td>{{ data.ParentescoEmergencia }}</td>
-      <td>{{ data.Horario }}</td>
-      <td>{{ data.PagoCheque }}</td>
-      <td>{{ data.NombresNIT }}</td>
-      <td>{{ data.ApellidosNIT }}</td>
-      <td>{{ data.TelefonoLaboral }}</td>
     </tr>
   </tbody>
 </nz-table>

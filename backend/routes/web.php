@@ -32,3 +32,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
 $router->group(['prefix' => 'api'], function () use ($router) {
     $router->get('empleados/',  ['uses' => 'EmpleadoController@mostrarEmpleados']);
 });
+
+$router->group(['prefix' => 'api'], function () use ($router) {
+    $router->get('clientes/',  ['uses' => 'ClienteController@mostrarClientes']);
+});
