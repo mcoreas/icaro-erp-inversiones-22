@@ -2,6 +2,7 @@
 class="site-page-header"
 nzTitle="Lista de Clientes"
 ></nz-page-header>
+<button nz-button nzType="primary" class="mb-5" (click)="agregar()">Agregar Cliente</button>
 
 <nz-table #nzTable [nzData]="listOfDisplayData" [nzScroll]="{ x: '8000px' }"  [nzPageSize]="20">
   <thead>
@@ -46,7 +47,7 @@ nzTitle="Lista de Clientes"
       <td>
         <div>
           <i class="fa-solid fa-eye" style="margin-right: 5px;color:#3498DB;" nzTooltipTitle="Ver mas" nzTooltipPlacement="top" nz-tooltip></i>
-          <i class="fa-solid fa-pen-to-square" style="margin-right: 5px;color:#E67E22;" nzTooltipTitle="Editar" nzTooltipPlacement="top" nz-tooltip></i>
+          <i (click)="update(data)" class="fa-solid fa-pen-to-square" style="margin-right: 5px;color:#E67E22;" nzTooltipTitle="Editar" nzTooltipPlacement="top" nz-tooltip></i>
           <i class="fa-solid fa-trash" style="color:#E74C3C;" nzTooltipTitle="Eliminar" nzTooltipPlacement="top" nz-tooltip></i>
         </div>
       </td>
@@ -89,3 +90,4 @@ nzTitle="Lista de Clientes"
     </div>
   </div>
 </nz-dropdown-menu>
+<app-formulario [visible]="visibleM" [data]="data" [type]="type" [url]="url" ></app-formulario>

@@ -12,12 +12,19 @@ export class AppComponent implements OnInit{
 
   public menu: Array<Menu> = [];
   public errorMessage = null;
+  public token = localStorage.getItem('token');
 
   constructor(private apiService: ApiService, private route:Router) {
   }
 
   ngOnInit(): void {
     this.initPage();
+    this.token = this.apiService.getToken();
+  }
+
+  validateToken(){
+    this.token = this.apiService.getToken();
+    return this.token;
   }
 
   initPage() {
@@ -33,42 +40,6 @@ export class AppComponent implements OnInit{
 
   }
 
-    // this.apiService.getData("modulos/1").subscribe(
-    //   data => {
-    //     const res:any = data;
-    //     res['modulos'].forEach((m:any) => {
-    //       const menu = new Menu();
-    //       menu.nombre = m.modulo;
-    //       menu.icon = m.icon;
-
-    //       res['submodulos'].forEach((s:any) => {
-    //         if(s.IdModulo === m.Id){
-    //           const submodulos = new SubModulos();
-    //           submodulos.nombre = s.submodulos;
-    //           submodulos.accion = [];
-
-    //           res['acciones'].forEach((a:any) => {
-    //             if(a.submodulo === s.Id){
-    //               submodulos.accion.push(a);
-    //             }
-    //           });
-    //           menu.modulos = submodulos;
-    //         }
-    //       });
-
-    //       this.menu.push(menu);
-
-    //     })
-
-    //     console.log(this.menu);
-
-    //   },
-    //   err =>{
-
-    //   }
-    // )
-
-
   redireccionarPagina(accion:any){
     if(accion === 'Listado de Empleados'){
       this.route.navigate(['lista-empleados']);
@@ -81,6 +52,13 @@ export class AppComponent implements OnInit{
       left: 0,
       behavior: 'smooth'
 });
+  }
+
+  logout(){
+    localStorage.removeItem("token");
+    localStorage.removeItem("usuario");
+    this.token = this.apiService.getToken();
+    this.route.navigate(['login']);
   }
 
 }

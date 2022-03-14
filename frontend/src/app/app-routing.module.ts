@@ -21,6 +21,9 @@ const routes: Routes = [
   },
   {
     path: "general", component: GeneralComponent
+  },
+  {
+    path: "**", component: DashboardComponent
   }
 ];
 

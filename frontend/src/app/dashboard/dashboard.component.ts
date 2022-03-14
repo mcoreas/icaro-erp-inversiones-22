@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ApiService } from '../api-service.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,10 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() {
+  constructor(private apiService: ApiService, private route: Router) {
    }
 
+   public token = localStorage.getItem('token');
+
   ngOnInit(): void {
+    this.token = this.apiService.getToken();
+    if(this.token === null){
+      this.route.navigate(['/login']);
+    }
+
   }
 
 }

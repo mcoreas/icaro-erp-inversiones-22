@@ -36,3 +36,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
 $router->group(['prefix' => 'api'], function () use ($router) {
     $router->get('clientes/',  ['uses' => 'ClienteController@mostrarClientes']);
 });
+
+$router->group(['prefix' => 'api'], function () use ($router) {
+    $router->post('login/',  ['uses' => 'AuthController@login']);
+});

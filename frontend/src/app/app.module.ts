@@ -80,6 +80,7 @@ import { ListarEmpleadosComponent } from './listar-empleados/listar-empleados.co
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { GeneralComponent } from './general/general.component';
+import { FormularioComponent } from './formulario/formulario.component';
 
 registerLocaleData(en);
 
@@ -91,7 +92,8 @@ registerLocaleData(en);
     ListarEmpleadosComponent,
     LoginComponent,
     DashboardComponent,
-    GeneralComponent
+    GeneralComponent,
+    FormularioComponent
   ],
   imports: [
     BrowserModule,

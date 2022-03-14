@@ -1,0 +1,32 @@
+<nz-drawer
+      [nzBodyStyle]="{ overflow: 'auto' }"
+      [nzMaskClosable]="false"
+      nzPlacement="left"
+      [nzWidth]="720"
+      [nzVisible]="visible"
+      nzTitle="Formulario de Registro"
+      [nzFooter]="footerTpl"
+      (nzOnClose)="close()"
+    >
+      <form nz-form *nzDrawerContent>
+        <div nz-row [nzGutter]="12" *ngIf="data != null">
+          <ng-container *ngFor="let item of data.campos">
+            <div nz-col nzSpan="12">
+              <nz-form-item>
+                <nz-form-label>{{item.nombre}}</nz-form-label>
+                <nz-form-control>
+                  <input nz-input [type]="item.tipo" ([ngModel])="item.value" value="{{item.value}}" [readonly]="item.readonly"/>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </ng-container>
+        </div>
+      </form>
+
+      <ng-template #footerTpl>
+        <div style="float: right">
+          <button nz-button style="margin-right: 8px;" (click)="close()">Cancelar</button>
+          <button nz-button nzType="primary" (click)="close()">Enviar</button>
+        </div>
+      </ng-template>
+    </nz-drawer>
